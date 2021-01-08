@@ -12,23 +12,23 @@ public class HLR08 {
     final String TRAFFIC_ADVISORY = "TRAFFIC ADVISORY";
     final String CLOSE_TRAFFIC = "CLOSE TRAFFIC";
 
-    private double Boundrie(double speed, int sec) {
+    private double Boundary(double speed, int sec) {
         speed = speed * 1.852; //Km/h
-        double boundrie = (speed * sec) / 3600; //km
-        boundrie /= 1.852; //NM
+        double boundary = (speed * sec) / 3600; //km
+        boundary /= 1.852; //NM
 
-        return boundrie;
+        return boundary;
     }
 
-    public List<Double> Boundries(Plane self_p) {
+    public List<Double> Boundaries(Plane self_p) {
         double speed = self_p.getSpeed();
-        List<Double> boundries = new ArrayList<>();
+        List<Double> boundaries = new ArrayList<>();
 
-        boundries.add(Boundrie(speed, 25));
-        boundries.add(Boundrie(speed, 40));
-        boundries.add(30.0);
+        boundaries.add(Boundary(speed, 25));
+        boundaries.add(Boundary(speed, 40));
+        boundaries.add(30.0);
 
-        return boundries;
+        return boundaries;
     }
 
     public double Distance(Plane self_p, Plane foreign_p) {
@@ -53,14 +53,14 @@ public class HLR08 {
     }
 
     public String Alert(Plane self_p, Plane foreign_p) {
-        List<Double> boundries = Boundries(self_p);
+        List<Double> boundaries = Boundaries(self_p);
         double dist = Distance(self_p, foreign_p);
 
-        if (dist <= boundries.get(RA)) {
+        if (dist <= boundaries.get(RA)) {
             return RESOLUTION_ADVISORY;
-        } else if (dist <= boundries.get(TA)) {
+        } else if (dist <= boundaries.get(TA)) {
             return TRAFFIC_ADVISORY;
-        } else if (dist <= boundries.get(CT)) {
+        } else if (dist <= boundaries.get(CT)) {
             return CLOSE_TRAFFIC;
         }
 

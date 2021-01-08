@@ -3,7 +3,6 @@ import com.testlogiciel.tcas.*;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class HLR08Test {
@@ -52,7 +51,7 @@ public class HLR08Test {
         HLR08 hlr08 = new HLR08();
         Plane mock_plane_a = new Plane(0,0,AVERAGE_PLANE_SPEED);
 
-        List<Double> boundries = hlr08.Boundries(mock_plane_a);
+        List<Double> boundries = hlr08.Boundaries(mock_plane_a);
 
         assertTrue(boundries.get(0) >= 3.4375 - EPSILON && boundries.get(0) <= 3.4375 + EPSILON);
         assertTrue(boundries.get(1) >= 5.5 - EPSILON && boundries.get(1) <= 5.5 + EPSILON);
@@ -63,7 +62,7 @@ public class HLR08Test {
         HLR08 hlr08 = new HLR08();
         Plane mock_plane_a = new Plane(0,0,AVERAGE_PLANE_SPEED_2);
 
-        List<Double> boundries = hlr08.Boundries(mock_plane_a);
+        List<Double> boundries = hlr08.Boundaries(mock_plane_a);
 
         assertTrue(boundries.get(0) >= 2.95138888889 - EPSILON && boundries.get(0) <= 2.95138888889 + EPSILON);
         assertTrue(boundries.get(1) >= 4.72222222222 - EPSILON && boundries.get(1) <= 4.72222222222 + EPSILON);
